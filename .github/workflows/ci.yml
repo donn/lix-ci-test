@@ -1,0 +1,19 @@
+name: CI
+
+# Events that trigger workflow
+on:
+  # Runs on all pushes to branches
+  push:
+
+jobs:
+  test_lix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Lix # CppNix crashes on Docker install
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf -L https://install.lix.systems/lix | sh -s -- install --extra-conf "
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            extra-substituters = https://nix-cache.fossi-foundation.org
+            extra-trusted-public-keys = nix-cache.fossi-foundation.org:3+K59iFwXqKsL7BNu6Guy0v+uTlwsxYQxjspXzqLYQs=
+          "
+      - run: "nix build github:librelane/librelane#librelane-docker"
