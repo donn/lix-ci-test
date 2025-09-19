@@ -17,4 +17,5 @@ jobs:
             extra-trusted-public-keys = nix-cache.fossi-foundation.org:3+K59iFwXqKsL7BNu6Guy0v+uTlwsxYQxjspXzqLYQs=
             experimental-features = nix-command flakes
           "
+      - run: cat /etc/nix/nix.conf
       - run: "nix build github:librelane/librelane/donn/prefer_upstream_nix#librelane-docker"
