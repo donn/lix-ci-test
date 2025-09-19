@@ -17,5 +17,4 @@ jobs:
           "
           echo "extra-substituters = https://nix-cache.fossi-foundation.org" | sudo tee -a /etc/nix/nix.conf
           echo "extra-trusted-public-keys = nix-cache.fossi-foundation.org:3+K59iFwXqKsL7BNu6Guy0v+uTlwsxYQxjspXzqLYQs=" | sudo tee -a /etc/nix/nix.conf
-          sudo pkill nix-daemon
       - run: "nix build github:librelane/librelane/donn/prefer_upstream_nix#librelane-docker"
